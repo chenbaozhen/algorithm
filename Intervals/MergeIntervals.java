@@ -1,7 +1,5 @@
 package algorithm.Intervals;
 
-import myUtility.Display;
-
 import java.util.*;
 
 public class MergeIntervals {
