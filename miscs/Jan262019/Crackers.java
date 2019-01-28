@@ -35,5 +35,21 @@ public class Crackers {
         }
         return new int[]{minR, maxR, minC, maxC};
     }
+
+    public int numberOfCrackers2(char[][] board) {
+        int count = 0;
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
+                if (board[r][c] != 'C') continue;
+                boolean up = r - 1 < 0 ? false : board[r - 1][c] == 'C';
+                boolean left = c - 1 < 0 ? false : board[r][c - 1] == 'C';
+                if (!up && !left) count++;
+                boolean down = r + 1 < board.length ? board[r + 1][c] == 'C' : false;
+                boolean right = c + 1 < board[0].length ? board[r][c + 1] == 'C' : false;
+                if ((up && left) || (up && right) || (down && left) || (down && right) ) return -1;
+            }
+        }
+        return count;
+    }
 }
 
