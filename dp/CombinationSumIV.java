@@ -1,6 +1,6 @@
 package algorithm.dp;
 
-import myUtility.Display;
+import algorithm.myUtility.Display;
 
 import java.util.ArrayList;
 import java.util.Arrays;

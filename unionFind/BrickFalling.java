@@ -1,6 +1,6 @@
 package algorithm.unionFind;
 
-import myUtility.MyPrintArray;
+import algorithm.myUtility.MyPrintArray;
 
 import java.util.Arrays;
 

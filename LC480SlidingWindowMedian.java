@@ -1,6 +1,6 @@
 package algorithm;
 
-import myUtility.Display;
+import algorithm.myUtility.Display;
 
 import java.util.*;
 

@@ -24,6 +24,9 @@ public class Display {
     public static void myPrint(int a) {
         System.out.println(a);
     }
+    public static void myPrint(double a) {
+        System.out.println(a);
+    }
     public static void myPrint(char c) {
         System.out.println(c);
     }

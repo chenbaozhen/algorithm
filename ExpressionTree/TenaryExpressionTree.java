@@ -1,6 +1,6 @@
 package algorithm.ExpressionTree;
 
-import myUtility.Display;
+import algorithm.myUtility.Display;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
