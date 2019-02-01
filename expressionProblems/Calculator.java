@@ -145,9 +145,56 @@ public class Calculator {
         }
         return sum;
     }
-    private int operation(char op, int num2, int num1) {
-        return num1 + (op == '+' ? num2 : -1 * num2);
+    public int calculate3(String s) {
+        Deque<Integer> deque = new ArrayDeque<>();
+        Deque<Character> ops = new ArrayDeque<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == ' ') continue;
+            if (isNumber(c)) {
+                int n = c - '0';
+                while (i + 1 < s.length() && isNumber(s.charAt(i + 1)) ) {
+                    n *= 10;
+                    n += s.charAt(++i) - '0';
+                }
+                deque.push(n);
+            } else if(c == '(') {
+                ops.push(c);
+            } else {
+                while (!ops.isEmpty() && ops.peek() != '(' && getPriority(ops.peek()) >= getPriority(c)) {
+                    deque.push(operation(ops.pop(), deque.pop(), deque.pop()));
+                }
+                if (c == ')') ops.pop();
+                else ops.push(c);
+            }
+        }
+        while (!ops.isEmpty()) {
+            deque.push(operation(ops.pop(), deque.pop(), deque.pop()));
+        }
+        return deque.pop();
     }
+    private int getPriority(char c) {
+        if (c == '*' || c == '/') return 3;
+        if (c == '+' || c == '-') return 2;
+        if (c == '(' || c == ')') return 1;
+        return 0;
+    }
+
+    private int operation(char op, int num2, int num1) {
+        switch(op){
+            case '+':
+                return num1 + num2;
+            case '-':
+                return num1 - num2;
+            case '*':
+                return num1 * num2;
+            case '/':
+                return num1 / num2;
+            default:
+                return num1 + num2;
+        }
+    }
+
     private boolean isNumber(char c) {
         return c <= '9' && c >= '0';
     }
