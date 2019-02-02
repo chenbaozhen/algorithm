@@ -22,12 +22,25 @@ public class ExtractLeetCode {
                 "    <span class=\"label label-success round\">Easy</span></td><td value=\"0\" label=\"[object Object]\"><div class=\"progress\" style=\"width: 100px; margin-top: 5px;\n" +
                 "    margin-bottom: 0px; height: 12px;\"><div class=\"progress-bar\n" +
                 "                progress-bar-info\" style=\"width: 0px;\"></div></div></td></tr>";
-        //System.out.println(solution.extractProblem(str));
+        //
+        String str2 = "<tr><td label=\"&nbsp;\"></td><td value=\"854\" label=\"#\">854</td><td value=\"K-Similar Strings\" " +
+                "label=\"Title\"><div class=\"title-cell__ZGos\"><a href=\"/problems/k-similar-strings\" data-limit=\"false\" title=\"\">K-Similar Strings</a></div></td>" +
+                "<td value=\"32.3\" label=\"Acceptance\">32.3%</td><td value=\"[object Object]\" label=\"Difficulty\"><span class=\"label label-danger round\">Hard</span></td>" +
+                "<td value=\"0\" label=\"Frequency,[object Object]\"><div class=\"wrapper__2vgc\"><div class=\"progress\">" +
+                "<div class=\"progress-bar progress-bar-info\" role=\"progressbar\" style=\"width: 0%;\"></div></div></div></td></tr>";
+        System.out.println(solution.extractProblem(str2));
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/google6month", "Google6");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/facebook6month", "Facebook6");
-        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/treeTag", "tree");
+        //solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/treeTag", "tree");
+
+        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/googleAll", "googleAll");
+        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/graph", "graph");
         for (Map.Entry<Integer, Problem> entry : solution.map.entrySet()){
-            if (entry.getValue().tags.contains("tree") && entry.getValue().tags.size() > 1)  System.out.println(entry.getValue());
+            if (entry.getValue().tags.contains("googleAll") && entry.getKey() >= 600  )  {
+                if (entry.getValue().tags.contains("Google6")) continue;
+                if(entry.getValue().tags.contains("Facebook6")) continue;
+                System.out.println(entry.getValue());
+            }
 
         }
 //        File file = new File("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/google6month");
