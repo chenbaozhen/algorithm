@@ -29,8 +29,6 @@ class NumArray {
         this.nums = new int[nums.length];
         for (int i = 0; i < nums.length; i++) this.nums[i] = nums[i];
         this.root = buildTree(0, nums.length - 1);
-        System.out.println(Arrays.toString(nums));
-        return;
     }
     private SegmentTreeNode buildTree(int start, int end) {
         if (start > end) return null;
