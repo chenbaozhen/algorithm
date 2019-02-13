@@ -71,15 +71,16 @@ class NumArray {
         if (i > mid) return sumRangeHelper(node.right, i, j);
         return sumRangeHelper(node.left, i, mid) + sumRangeHelper(node.right, mid + 1, j);
     }
-}
-class SegmentTreeNode{
-    int start;
-    int end;
-    int sum;
-    SegmentTreeNode left, right;
-    public SegmentTreeNode(int start, int end, int sum){
-        this.start = start;
-        this.end = end;
-        this.sum = sum;
+    class SegmentTreeNode{
+        int start;
+        int end;
+        int sum;
+        SegmentTreeNode left, right;
+        public SegmentTreeNode(int start, int end, int sum){
+            this.start = start;
+            this.end = end;
+            this.sum = sum;
+        }
     }
 }
+

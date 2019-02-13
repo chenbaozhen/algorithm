@@ -29,23 +29,28 @@ public class ExtractLeetCode {
                 "<td value=\"0\" label=\"Frequency,[object Object]\"><div class=\"wrapper__2vgc\"><div class=\"progress\">" +
                 "<div class=\"progress-bar progress-bar-info\" role=\"progressbar\" style=\"width: 0%;\"></div></div></div></td></tr>";
         //System.out.println(solution.extractProblem(str2));
-        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/google6month", "Google6");
+//        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/google6month", "Google6");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/facebook6month", "Facebook6");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/treeTag", "tree");
 
-        solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/googleAll", "googleAll");
+        //solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/googleAll", "googleAll");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/graph", "graph");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/bfs", "bfs");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/dfs", "dfs");
         solution.addFiles("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/binarySearch", "binarySearch");
+        List<Map.Entry<Integer, Problem>> list = new ArrayList<>();
         for (Map.Entry<Integer, Problem> entry : solution.map.entrySet()){
             if ((entry.getValue().tags.contains("googleAll") && entry.getKey() >= 600 ) ||
                     (entry.getValue().tags.contains("Google6")) || (entry.getValue().tags.contains("Facebook6")))
             {
-                if (entry.getValue().tags.contains("binarySearch") && !entry.getValue().tags.contains("dfs") &&
-                        !entry.getValue().tags.contains("bfs") && !entry.getValue().tags.contains("tree") && !entry.getValue().tags.contains("graph") ) System.out.println(entry.getValue());
+                list.add(entry);
+
             }
 
+        }
+        Collections.sort(list, Comparator.comparingDouble(o -> -1 * o.getValue().freq));
+        for (Map.Entry<Integer, Problem> entry : list) {
+            System.out.println(entry.getValue());
         }
 //        File file = new File("/Users/baozhenchen/Documents/coding/java/alvinchen/Practice/Practice/resource/google6month");
 //
