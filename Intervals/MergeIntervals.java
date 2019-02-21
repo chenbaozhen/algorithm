@@ -46,7 +46,7 @@ public class MergeIntervals {
                 }
             }
         }
-        ans.add(cur);
+        if (cur != null) ans.add(cur);
         return ans;
     }
     public List<Interval> mergeIntervalMergeSort(List<Interval> intervalList) {
