@@ -1,10 +1,7 @@
 package algorithm.TwoPointers;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 public class TwoPointerExcercise {
 
@@ -83,6 +80,34 @@ public class TwoPointerExcercise {
             if (nums[i - 2] + nums[i - 1] > nums[i]) return true;
         }
         return false;
+    }
+    public int numberOfPairDiff(int[] nums, int target) {
+        Arrays.sort(nums);
+        int slow = 0, fast = 0;
+        int ans = 0;
+        while (fast < nums.length) {
+            if (nums[fast] - nums[slow] == target) {
+                ans++;
+                fast++;
+                slow++;
+            } else if (nums[fast] - nums[slow] < target) {
+                fast++;
+            } else if (nums[fast] - nums[slow] > target ) {
+                slow++;
+            }
+        }
+        return ans;
+    }
+    public int numberOfPairDiffII(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int ans = 0;
+        for (int n : nums) {
+            ans += map.getOrDefault(n - target, 0);
+            ans += map.getOrDefault(n + target, 0);
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+        return ans;
+
     }
 
 }
