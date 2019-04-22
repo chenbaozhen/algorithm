@@ -33,9 +33,9 @@ public class TreeNodeParent {
     }
 }
 
-class TreeIterator {
+class TreeIteratorInorder {
     TreeNodeParent node;
-    public TreeIterator(TreeNodeParent root) {
+    public TreeIteratorInorder(TreeNodeParent root) {
         node = root;
         while (node.left != null) {
             node = node.left;
@@ -71,7 +71,26 @@ class TreeIterator {
         String treeSer = "1, 2, 3, 4, 5, #, #, #, #, #, 6";
         String[] list = treeSer.split(",");
         TreeNodeParent root = TreeNodeParent.buildTree(list);
-        TreeIterator iterator = new TreeIterator(root);
+        TreeIteratorInorder iterator = new TreeIteratorInorder(root);
         while (iterator.hasNext())  System.out.println(iterator.next());
+        TreeTraversalParent traversal = new TreeTraversalParent();
+        TreeNodeParent node = traversal.firstNode(root);
+        while(node != null) {
+            System.out.println(node.val);
+            node = traversal.nextNode(node);
+        }
+    }
+}
+
+class TreeTraversalParent {
+    public TreeNodeParent firstNode(TreeNodeParent root) {
+        if (root == null) return null;
+        while (root.left != null) root = root.left;
+        return root;
+    }
+    public TreeNodeParent nextNode(TreeNodeParent cur) {
+        if (cur.right != null) return firstNode(cur.right);
+        while (cur.parent != null && cur == cur.parent.right)  cur  = cur.parent;
+        return cur.parent;
     }
 }
