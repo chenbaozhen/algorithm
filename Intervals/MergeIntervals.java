@@ -36,7 +36,7 @@ public class MergeIntervals {
         Interval cur = null;
         for (Interval itv : intervalList) {
             if (cur == null) {
-                cur = new Interval(itv.start, itv.end);
+                cur = new Interval(itv.start , itv.end);
             } else {
                 if (itv.start > cur.end) {
                     ans.add(cur);
@@ -47,6 +47,7 @@ public class MergeIntervals {
             }
         }
         if (cur != null) ans.add(cur);
+        int x = 0;
         return ans;
     }
     public List<Interval> mergeIntervalMergeSort(List<Interval> intervalList) {
