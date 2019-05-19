@@ -97,7 +97,7 @@ public class BloomFilterSalt implements BloomFilter {
     }
 
     /**
-     * Add element to the bloom filter
+     * calculate the position in the byte array to set it hi
      *
      * @param saltedString the word after adding the salt
      *
@@ -111,7 +111,7 @@ public class BloomFilterSalt implements BloomFilter {
     }
 
     /**
-     * check if the bloomfilter may contain this word
+     * check if the bloom filter may contain this word
      *
      * @param str the word to test
      *
